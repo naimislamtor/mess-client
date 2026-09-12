@@ -1,16 +1,8 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Platform } from 'react-native';
 
-// For Local Testing: Android emulator uses 10.0.2.2, Web/iOS uses localhost
-const getBaseUrl = () => {
-  if (Platform.OS === 'android') {
-    return 'http://10.0.2.2:5000/api';
-  }
-  return 'http://localhost:5000/api';
-};
-
-export const API_URL = getBaseUrl();
+// Production Online Live Backend API URL
+export const API_URL = 'https://mess-server-fipe.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -31,4 +23,3 @@ api.interceptors.request.use(
 );
 
 export default api;
-
